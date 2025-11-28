@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuni Online Shop</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #ffeb3b; /* Kuning */
+    }
+
+    /* Tulisan besar COLOMBUS */
+    .colombus-banner {
+        background: #000;
+        color: #fff;
+        padding: 25px;
+        text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+    }
+
+    header {
+        background: #ff3d7f;
+        color: white;
+        padding: 16px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .subtext {
+        font-size: 14px;
+        margin-top: 4px;
+        font-weight: normal;
+    }
+
+    .wa-header-btn {
+        display: inline-block;
+        margin-top: 10px;
+        background: #25D366;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .container {
+        padding: 15px;
+    }
+    .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(160px,1fr));
+        gap: 15px;
+    }
+    .item {
+        background: white;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    .item img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .item h3 {
+        font-size: 15px;
+        margin: 8px 0 4px;
+    }
+    .credit-label {
+        margin: 0;
+        font-weight: bold;
+        color: #ff3d7f;
+        font-size: 14px;
+    }
+    .wa-btn {
+        display: block;
+        margin-top: 8px;
+        background: #25D366;
+        color: white;
+        padding: 8px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+    }
+</style>
+
+</head>
+<body>
+
+<!-- Banner COLOMBUS -->
+<div class="colombus-banner">COLOMBUS</div>
+
+<header>
+    Yuni Online Shop
+    <div class="subtext">
+        Produk aneka-ragam kredit • untuk produk selengkapnya bisa chat nomor WhatsApp di bawah
+    </div>
+
+    <a class="wa-header-btn"
+       href="https://wa.me/6285298020944?text=Halo%2C%20saya%20ingin%20menanyakan%20produk%20kredit"
+       target="_blank">
+        Chat WhatsApp 6285298020944
+    </a>
+</header>
+
+<div class="container">
+    <div id="productList" class="products"></div>
+</div>
+
+<script>
+const WA_NUMBER = "6285298020944";
+
+const PRODUCTS = [
+  {id:1,name:'speker',img:'https://files.catbox.moe/zfcbt2.jpg'},
+  {id:2,name:'laptop',img:'https://files.catbox.moe/z8ve6q.jpg'},
+  {id:3,name:'sepeda listrik',img:'https://files.catbox.moe/81w3k4.jpg'},
+  {id:4,name:'kulkas',img:'https://files.catbox.moe/991jcy.jpg'},
+  {id:5,name:'speker',img:'https://files.catbox.moe/1gnnwv.jpg'},
+  {id:6,name:'mesin pompa air',img:'https://files.catbox.moe/39x7fm.jpg'},
+  {id:7,name:'penggorengan',img:'https://files.catbox.moe/w0fqke.jpg'},
+  {id:8,name:'ac',img:'https://files.catbox.moe/ixt5hd.jpg'}
+];
+
+function renderProducts() {
+    const list = document.getElementById("productList");
+    list.innerHTML = "";
+    PRODUCTS.forEach(p => {
+        const waMessage = encodeURIComponent(
+            `Halo, saya ingin menanyakan kredit produk: ${p.name}`
+        );
+
+        list.innerHTML += `
+            <div class="item">
+                <img src="${p.img}" alt="${p.name}">
+                <h3>${p.name}</h3>
+                <p class="credit-label">Kredit</p>
+
+                <a class="wa-btn"
+                   href="https://wa.me/${WA_NUMBER}?text=${waMessage}"
+                   target="_blank">
+                    Chat WhatsApp
+                </a>
+            </div>
+        `;
+    });
+}
+
+renderProducts();
+</script>
+
+</body>
+</html>
